@@ -1,0 +1,27 @@
+{
+  "name": "who-said-that",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#runtime/*": "@typhonjs-fvtt/runtime/*",
+    "#standard/*": "@typhonjs-fvtt/standard/*"
+  },
+  "dependencies": {
+    "@typhonjs-fvtt/runtime": "^0.2.0-next.6",
+    "@typhonjs-fvtt/standard": "^0.2.0-next.3",
+    "svelte": "^4.2.19"
+  },
+  "devDependencies": {
+    "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
+    "typescript": "^5.7.2"
+  },
+  "browserslist": [
+    ">5%",
+    "not IE 11"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  }
+}

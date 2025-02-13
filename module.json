@@ -1,0 +1,50 @@
+{
+  "id": "who-said-that",
+  "title": "Who Said That?",
+  "description": "Shows speech indicator next to players token when speaking",
+  "authors": [
+    {
+      "name": "chrisjbrown",
+      "url": "https://github.com/chrisjbrown"
+    }
+  ],
+  "version": "0.0.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "esmodules": [
+    "dist/who-said-that.js"
+  ],
+  "styles": [
+    "dist/who-said-that.css"
+  ],
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "json"
+      ],
+      "paths": [
+        "lang"
+      ]
+    }
+  },
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [],
+  "url": "https://github.com/chrisjbrown/who-said-that",
+  "readme": "https://github.com/chrisjbrown/who-said-that/blob/master/README.md",
+  "bugs": "https://github.com/chrisjbrown/who-said-that/issues",
+  "changelog": "https://github.com/chrisjbrown/who-said-that/releases/latest/",
+  "manifest": "This is auto replaced",
+  "download": "This is auto replaced",
+  "socket": true,
+  "protected": false,
+  "coreTranslation": false,
+  "library": false
+}
