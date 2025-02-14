@@ -1,7 +1,7 @@
 ![Downloads](https://img.shields.io/github/downloads/chrisjbrown/who-said-that/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge) [![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fwho-said-that&colorB=448d34&style=for-the-badge)](https://forge-vtt.com/bazaar#package=who-said-that)
 
 # Who Said That
-
+A module that when enabled asks permission to listen to the user's microphone. If granted, the module adds a listener to the microphone and analyzes the volume of the speaker and displays a speech bubble above any/all associated actors in a scene. For GM's this is any currently controlled actors in the scene.
 
 # Installation
 
