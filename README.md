@@ -3,6 +3,18 @@
 # Who Said That
 A module that when enabled asks permission to listen to the user's microphone. If granted, the module adds a listener to the microphone and analyzes the volume of the speaker and displays a speech bubble above any/all associated actors in a scene. For GM's this is any currently controlled actors in the scene.
 
+<div><img src="./media/speaker.png" alt="Step-1" width="300"/></div>
+
+## Setup
+1. Enable module
+2. Allow microphone permissions
+3. See speech bubble 
+
+
+
+## Settings
+Adjust threshold in settings such that it detects voice but not mouse / keyboard clicks
+
 # Installation
 
 ## Method 1
