@@ -4,6 +4,7 @@ export default class SpeechDetector {
     readonly speakingSocket: any;
     private threshold: number;
     private isSpeaking: boolean;
+    private speakingTimer: NodeJS.Timeout | null;
     private stopSpeakingTimeout: NodeJS.Timeout | null;
     private audioContext: AudioContext | null;
     private analyser: AnalyserNode | null;
@@ -14,6 +15,7 @@ export default class SpeechDetector {
         this.threshold = threshold;
         this.debounceTime = debounceTime;
         this.isSpeaking = false;
+        this.speakingTimer = null;
         this.stopSpeakingTimeout = null;
         this.audioContext = null;
         this.analyser = null;
@@ -65,22 +67,33 @@ export default class SpeechDetector {
         const tokenIds = getTokenIds()
         if (tokenIds.length > 0) {
             if (average > this.threshold) {
-                if (!this.isSpeaking) {
-                    console.log("WST - User started speaking");
-                    this.isSpeaking = true;
-                    this.speakingSocket.executeForEveryone(addSpeakingIndicator, tokenIds);
+                if (!this.isSpeaking && !this.speakingTimer) {
+                    // Start a timer to detect sustained speaking for 500ms
+                    this.speakingTimer = setTimeout(() => {
+                        console.log("WST - User started speaking");
+                        this.isSpeaking = true;
+                        this.speakingSocket.executeForEveryone(addSpeakingIndicator, tokenIds);
+                    }, 300); // Delay detection for 300ms
                 }
 
                 if (this.stopSpeakingTimeout) {
                     clearTimeout(this.stopSpeakingTimeout);
                     this.stopSpeakingTimeout = null;
                 }
-            } else if (this.isSpeaking && !this.stopSpeakingTimeout) {
-                this.stopSpeakingTimeout = setTimeout(() => {
-                    console.log("WST - User stopped speaking");
-                    this.isSpeaking = false;
-                    this.speakingSocket.executeForEveryone(removeSpeakingIndicator, tokenIds);
-                }, this.debounceTime);
+            } else {
+                if (this.isSpeaking && !this.stopSpeakingTimeout) {
+                    this.stopSpeakingTimeout = setTimeout(() => {
+                        console.log("WST - User stopped speaking");
+                        this.isSpeaking = false;
+                        this.speakingSocket.executeForEveryone(removeSpeakingIndicator, tokenIds);
+                    }, this.debounceTime);
+                }
+
+                // Reset the speaking timer if user stops speaking
+                if (this.speakingTimer) {
+                    clearTimeout(this.speakingTimer);
+                    this.speakingTimer = null;
+                }
             }
         }
         requestAnimationFrame(this.checkIfUserIsSpeaking.bind(this));
