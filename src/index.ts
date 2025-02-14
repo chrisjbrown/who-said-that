@@ -16,10 +16,10 @@ Hooks.once("init", () => {
       type: Number,
       range: {
          min: 0,
-         max: 200,
+         max: 100,
          step: 1,
       },
-      default: 100,
+      default: 50,
       onChange: function (t) {
          Hooks.call('WSTThresholdChange', t)
       },

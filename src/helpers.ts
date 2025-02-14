@@ -51,7 +51,7 @@ export function removeSpeakingIndicator(tokenIds: string[]) {
 
 export function getTokenIds(): string[] {
    if (game?.user?.isGM) {
-      return game.user?.getActiveTokens().map(t => t.id) ?? []
+      return canvas?.tokens?.controlled.map(t => t.id) ?? []
    }
    return game.user?.character?.getActiveTokens().map(t => t.id) ?? []
 }

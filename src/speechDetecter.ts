@@ -10,7 +10,7 @@ export default class SpeechDetector {
     private microphone: MediaStreamAudioSourceNode | null;
     private dataArray: Uint8Array;
 
-    constructor(threshold: number = 105, debounceTime: number = 500) {
+    constructor(threshold: number = 50, debounceTime: number = 700) {
         this.threshold = threshold;
         this.debounceTime = debounceTime;
         this.isSpeaking = false;
