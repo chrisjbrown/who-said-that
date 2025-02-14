@@ -1,8 +1,8 @@
 import { addSpeakingIndicator, removeSpeakingIndicator, getTokenIds } from "./helpers"
 export default class SpeechDetector {
-    readonly threshold: number;
     readonly debounceTime: number;
     readonly speakingSocket: any;
+    private threshold: number;
     private isSpeaking: boolean;
     private stopSpeakingTimeout: NodeJS.Timeout | null;
     private audioContext: AudioContext | null;
@@ -22,6 +22,10 @@ export default class SpeechDetector {
         this.speakingSocket = socketlib.registerModule("who-said-that");
         this.speakingSocket.register("addSpeakingIndicator", addSpeakingIndicator);
         this.speakingSocket.register("removeSpeakingIndicator", removeSpeakingIndicator);
+
+        Hooks.on('WSTThresholdChange', (threshold: number) => {
+            this.setThreshold(threshold)
+        })
     }
 
     // Starts monitoring the microphone
@@ -80,6 +84,12 @@ export default class SpeechDetector {
             }
         }
         requestAnimationFrame(this.checkIfUserIsSpeaking.bind(this));
+    }
+
+    // Sets a new threshold value dynamically
+    setThreshold(newThreshold: number): void {
+        console.log(`WST - Threshold updated to: ${newThreshold}`);
+        this.threshold = newThreshold;
     }
 
     // Stops the speech detection and cleans up resources

@@ -1,5 +1,10 @@
 {
   "wst": {
-    "title": "Who said that"
+    "settings": {
+      "threshold": {
+        "name": "Threshold for speech indicator",
+        "hint": "Lower is more likely to show the indicator"
+      }
+    }
   }
 }
