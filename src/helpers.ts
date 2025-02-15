@@ -1,7 +1,7 @@
 function getContainer() {
    const container = new PIXI.Container();
    container.name = "speaking-indicator";
-   const img = "modules/who-said-that/assets/blue-bubble.webm";
+   const img = game.settings.get('who-said-that', 'indicatorStyle');
    const alpha = 1;
    let video = img.endsWith("webm") ? document.createElement("video") : null;
    if (video) {

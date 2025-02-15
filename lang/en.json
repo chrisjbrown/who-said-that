@@ -4,6 +4,13 @@
       "threshold": {
         "name": "Threshold for speech indicator",
         "hint": "Lower is more likely to show the indicator, adjust according to your own microphone"
+      },
+      "indicator": {
+        "name": "Indicator style",
+        "choices": {
+          "dark": "Dark",
+          "blue": "Blue"
+        }
       }
     }
   }

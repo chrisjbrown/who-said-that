@@ -24,4 +24,19 @@ Hooks.once("init", () => {
          Hooks.call('WSTThresholdChange', t)
       },
    });
+
+   game.settings.register("who-said-that", "indicatorStyle", {
+      name: "wst.settings.indicator.name",
+      hint: "",
+      scope: "client",
+      config: true,
+      requiresReload: false,
+      type: String,
+      choices: {
+         "modules/who-said-that/assets/dark-bubble.webm": "wst.settings.indicator.choices.dark",
+         "modules/who-said-that/assets/blue-bubble.webm": "wst.settings.indicator.choices.blue"
+      },
+      default: "modules/who-said-that/assets/dark-bubble.webm",
+   });
+
 })
