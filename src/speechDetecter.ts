@@ -70,7 +70,6 @@ export default class SpeechDetector {
                 if (!this.isSpeaking && !this.speakingTimer) {
                     // Start a timer to detect sustained speaking for 500ms
                     this.speakingTimer = setTimeout(() => {
-                        console.log("WST - User started speaking");
                         this.isSpeaking = true;
                         this.speakingSocket.executeForEveryone(addSpeakingIndicator, tokenIds);
                     }, 300); // Delay detection for 300ms
@@ -83,7 +82,6 @@ export default class SpeechDetector {
             } else {
                 if (this.isSpeaking && !this.stopSpeakingTimeout) {
                     this.stopSpeakingTimeout = setTimeout(() => {
-                        console.log("WST - User stopped speaking");
                         this.isSpeaking = false;
                         this.speakingSocket.executeForEveryone(removeSpeakingIndicator, tokenIds);
                     }, this.debounceTime);
@@ -101,7 +99,6 @@ export default class SpeechDetector {
 
     // Sets a new threshold value dynamically
     setThreshold(newThreshold: number): void {
-        console.log(`WST - Threshold updated to: ${newThreshold}`);
         this.threshold = newThreshold;
     }
 
